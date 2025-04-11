@@ -1,0 +1,137 @@
+.find-job {
+  min-height: 100vh;
+  background-color: #e9eff9;
+
+  .search-banner {
+    height: 160px;
+    background: url('@/assets/images/job_banner.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .main-content {
+    width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+
+    .filter-container {
+      background: #fff;
+      border-radius: 4px;
+      margin-bottom: 20px;
+
+      .filter-area {
+        padding: 20px;
+
+        .filter-item {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 15px;
+          position: relative;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .label {
+            width: 60px;
+            color: #606266;
+            font-size: 14px;
+            line-height: 32px;
+          }
+
+          .options {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-right: 80px;
+
+            .el-tag {
+              cursor: pointer;
+              margin-right: 10px;
+              margin-bottom: 10px;
+
+              &.active {
+                background-color: #409EFF;
+                border-color: #409EFF;
+                color: #fff;
+              }
+
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+
+          .more-btn {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            cursor: pointer;
+            color: #409EFF;
+            font-size: 14px;
+
+            .el-icon-arrow-down {
+              margin-left: 4px;
+              transition: transform 0.3s;
+
+              &.is-reverse {
+                transform: rotate(180deg);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .content-wrapper {
+      display: flex;
+      gap: 20px;
+
+      .job-list {
+        flex: 1;
+        background: #fff;
+        padding: 20px;
+        border-radius: 4px;
+
+        .pagination {
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+
+      .recommend-companies {
+        width: 300px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 4px;
+
+        .recommend-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 15px;
+          color: #333;
+        }
+
+        .company-card {
+          margin-bottom: 15px;
+
+          .placeholder-img {
+            height: 150px;
+            background: #f5f7fa;
+            border-radius: 4px;
+            margin-bottom: 10px;
+          }
+
+          .company-name {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
