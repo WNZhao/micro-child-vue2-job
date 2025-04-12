@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2025-04-11 14:09:06
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2025-04-11 17:05:13
+ * @LastEditTime: 2025-04-12 17:42:07
  * @FilePath: /micro-child-vue2-job/src/views/FindJob.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -117,7 +117,56 @@
             description="暂无职位"
           ></el-empty>
           <div v-else class="job-items">
-            <!-- 这里添加职位列表内容 -->
+            <div v-for="job in jobList" :key="job.jobId" class="job-item">
+              <div class="job-info">
+                <div class="left">
+                  <div class="job-title">
+                    <h3>{{ job.jobTitle }}</h3>
+                    <span class="salary">{{ job.salaryRange }}</span>
+                  </div>
+                  <div class="job-tags">
+                    <span class="tag">{{ job.workCity }}</span>
+                    <span class="tag">{{ job.workExperience }}</span>
+                    <span class="tag">{{ job.education }}</span>
+                  </div>
+                  <div class="welfare-tags">
+                    <el-tag
+                      v-for="tag in job.welfareTags"
+                      :key="tag"
+                      size="small"
+                      type="info"
+                      >{{ tag }}</el-tag
+                    >
+                  </div>
+                </div>
+                <div class="right">
+                  <div class="company-info">
+                    <img
+                      :src="job.enterpriseLogo"
+                      :alt="job.enterpriseName"
+                      class="company-logo"
+                    />
+                    <div class="company-detail">
+                      <div class="company-name">{{ job.enterpriseName }}</div>
+                      <div class="company-tags">
+                        <span>{{ job.industry }}</span>
+                        <span>200人以上</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="refresh-time">{{ job.refreshTimeStr }}</div>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <el-tag
+                  v-for="tag in job.skillTags"
+                  :key="tag"
+                  size="small"
+                  effect="plain"
+                  >{{ tag }}</el-tag
+                >
+              </div>
+            </div>
           </div>
 
           <!-- 分页 -->
@@ -286,5 +335,135 @@ export default {
       }
     }
   }
+}
+
+.job-items {
+  .job-item {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .job-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+
+      .left {
+        flex: 1;
+        margin-right: 24px;
+
+        .job-title {
+          display: flex;
+          align-items: center;
+          margin-bottom: 12px;
+
+          h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            margin-right: 16px;
+          }
+
+          .salary {
+            color: #ff6b6b;
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+
+        .job-tags {
+          margin-bottom: 12px;
+
+          .tag {
+            color: #666;
+            margin-right: 16px;
+            font-size: 13px;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        .welfare-tags {
+          .el-tag {
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border-radius: 2px;
+            background: #f8f9fc;
+            border-color: transparent;
+            color: #666;
+          }
+        }
+      }
+
+      .right {
+        .company-info {
+          display: flex;
+          align-items: center;
+          margin-bottom: 12px;
+
+          .company-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            margin-right: 12px;
+            object-fit: cover;
+          }
+
+          .company-detail {
+            .company-name {
+              font-size: 14px;
+              color: #333;
+              margin-bottom: 4px;
+            }
+
+            .company-tags {
+              color: #999;
+              font-size: 12px;
+
+              span {
+                margin-right: 12px;
+
+                &:last-child {
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+        }
+
+        .refresh-time {
+          color: #999;
+          font-size: 12px;
+          text-align: right;
+        }
+      }
+    }
+
+    .skill-tags {
+      .el-tag {
+        margin-right: 8px;
+        margin-bottom: 8px;
+        background: #f8f9fc;
+        border-color: transparent;
+        color: #666;
+      }
+    }
+  }
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 24px;
 }
 </style>
