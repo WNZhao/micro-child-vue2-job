@@ -8,6 +8,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import JobDetail from '../views/JobDetail.vue'
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
   {
     path: '/',
     component: () => import('@/views/FindJob.vue'),
+  },
+  {
+    path: '/job/:id',
+    name: 'JobDetail',
+    component: JobDetail
   },
 ];
 
