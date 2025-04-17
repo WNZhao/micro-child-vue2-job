@@ -6,6 +6,9 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     port: 8080,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     proxy: {
       '^/api': {
         target: 'http://127.0.0.1:4523/m1/6202454-5895755-default',
