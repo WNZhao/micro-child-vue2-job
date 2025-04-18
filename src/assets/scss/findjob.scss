@@ -9,6 +9,46 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+
+    .search-container {
+      width: 800px;
+      margin: 0 auto;
+
+      ::v-deep .el-input-group__append {
+        padding: 0;
+        background-color: transparent;
+
+        .el-button {
+          height: 48px;
+          margin: 0;
+          border-radius: 0 4px 4px 0;
+          background-color: #4e6ef2 !important;
+          border-color: #4e6ef2 !important;
+          padding: 12px 24px;
+          font-size: 16px;
+          color: #fff !important;
+
+          &:hover {
+            background-color: #4662d9 !important;
+            border-color: #4662d9 !important;
+            color: #fff !important;
+          }
+
+          &:active {
+            background-color: #3d53c4 !important;
+            border-color: #3d53c4 !important;
+            color: #fff !important;
+          }
+        }
+      }
+
+      ::v-deep .el-input__inner {
+        height: 48px;
+        line-height: 48px;
+        border-radius: 4px 0 0 4px;
+        border-right: none;
+      }
+    }
   }
 
   .main-content {
